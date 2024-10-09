@@ -22,7 +22,7 @@ jobs:
         password: Trace@Docker295
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag PythonWebApp:1.0
+      run: docker build . --file Dockerfile --tag pythonwebapp:1.0
 
     - name: Push Docker Image
-      run: docker push PythonWebApp:1.0 
+      run: docker push pythonwebapp:1.0
