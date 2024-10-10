@@ -53,6 +53,9 @@ jobs:
 
     steps:
 
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+
     - name: Deploy to Kubernetes(using kubectl apply)
       run: |
         kubectl --kubeconfig k8s-kubeconfig.yaml apply -f k8s/deployment.yaml
