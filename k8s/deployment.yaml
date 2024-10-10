@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: PythonWebApp-deployment
+  name: pythonwebapp-deployment
   labels:
-    app: PythonWebApp
+    app: pythonwebapp
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: PythonWebApp
+      app: pythonwebapp
   template:
     metadata:
       labels:
-        app: PythonWebApp
+        app: pythonwebapp
     spec:
       containers:
-      - name: PythonWebApp
+      - name: pythonwebapp
         image: cptr9/pythonwebapp:1.0
         ports:
         - containerPort: 5000
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: PythonWebApp-service
+  name: pythonwebapp-service
   namespace: default
 spec:
   selector:
-    app: PythonWebApp
+    app: pythonwebapp
   ports:
     - protocol: TCP
       port: 80
