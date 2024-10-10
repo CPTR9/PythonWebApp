@@ -28,7 +28,7 @@ jobs:
         pytest
 
 
-  Build And Push Docker Image:
+  Build_And_Push_Docker_Image:
     runs-on: ubuntu-latest
 
     steps:
