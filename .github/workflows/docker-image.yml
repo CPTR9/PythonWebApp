@@ -46,3 +46,12 @@ jobs:
 
     - name: Push Docker Image
       run: docker push cptr9/pythonwebapp:2.0
+
+  Deploy_K8s:
+    runs-on: ubuntu-latest
+    needs: Build_And_Push_Docker_Image
+
+    -name: Deploy to Kubernetes(using kubectl apply)
+    run: |
+      kubectl --kubeconfig k8s-kubeconfig.yaml apply -f k8s/deployment.yaml
+      

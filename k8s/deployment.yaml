@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PythonWebApp-deployment
+  labels:
+    app: PythonWebApp
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: PythonWebApp
+  template:
+    metadata:
+      labels:
+        app: PythonWebApp
+    spec:
+      containers:
+      - name: PythonWebApp
+        image: cptr9/pythonwebapp:1.0
+        ports:
+        - containerPort: 5000
+---
+# Nodeport service to expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: PythonWebApp-service
+  namespace: default
+spec:
+  selector:
+    app: PythonWebApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  #type: NodePort
+  type: LoadBalancer
