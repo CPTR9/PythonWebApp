@@ -51,7 +51,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: Build_And_Push_Docker_Image
 
-    -name: Deploy to Kubernetes(using kubectl apply)
-    run: |
-      kubectl --kubeconfig k8s-kubeconfig.yaml apply -f k8s/deployment.yaml
+    steps:
+
+    - name: Deploy to Kubernetes(using kubectl apply)
+      run: |
+        kubectl --kubeconfig k8s-kubeconfig.yaml apply -f k8s/deployment.yaml
       
