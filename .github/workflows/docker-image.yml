@@ -56,9 +56,10 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
 
-    - uses: actions/setup-kubernetes@v2
-      with:
-          kubeconfig: k8s-kubeconfig.yaml
+    - name: Set up Kubernetes config
+      run: |
+          mkdir -p $HOME/.kube  # Create the .kube directory
+          cp k8s-kubeconfig.yaml $HOME/.kube/config
 
     - name: Get Nodes
       run : kubectl get nodes
