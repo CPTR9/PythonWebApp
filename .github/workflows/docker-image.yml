@@ -42,10 +42,10 @@ jobs:
         password: ${{secrets.DOCKER_PASSWORD}}
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag cptr9/pythonwebapp:2.0
+      run: docker build . --file Dockerfile --tag cptr9/pythonwebapp:1.0
 
     - name: Push Docker Image
-      run: docker push cptr9/pythonwebapp:2.0
+      run: docker push cptr9/pythonwebapp:1.0
 
   Deploy_K8s:
     runs-on: ubuntu-latest
